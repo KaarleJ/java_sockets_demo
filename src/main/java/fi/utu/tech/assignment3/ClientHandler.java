@@ -1,8 +1,31 @@
 package fi.utu.tech.assignment3;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.Socket;
+
 public class ClientHandler extends Thread {
+    Socket s;
 
-    // TODO: Toteuta asiakaspalvelija tänne
+    public ClientHandler(Socket s) {
+        super();
+        this.s = s;
+    }
 
-    
+    @Override
+    public void run() {
+        System.out.println("Client connected");
+
+        try (InputStream in = s.getInputStream()) {
+            String message = new String(in.readAllBytes());
+            System.out.println("Received message: " + message);
+
+            System.out.println("Closing a socket");
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }
