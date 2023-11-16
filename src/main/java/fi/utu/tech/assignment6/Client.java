@@ -21,7 +21,7 @@ public class Client {
         PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(commSocket.getOutputStream())), true);
 
         while (true) {
-            System.out.println("Enter command (ON/OFF/QUERY/QUIT)");
+            System.out.println("Enter command (QUIT/LIGHT;ON/OFF/QUERY)");
             Scanner input = new Scanner(System.in);
             String cmd = input.nextLine();
             out.println(cmd);

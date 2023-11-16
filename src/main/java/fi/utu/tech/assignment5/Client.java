@@ -1,9 +1,7 @@
 package fi.utu.tech.assignment5;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -21,20 +19,6 @@ public class Client {
         out.println("LIGHT;ON;3");
         out.flush();
 
-        System.out.println("Waiting for confirmation");
-        BufferedReader in = new BufferedReader(new InputStreamReader(commSocket.getInputStream()));
-        String message;
-        while (true) {
-            message = in.readLine();
-            System.out.println("Received message: " + message);
-            if (message.toLowerCase().equals("ack")) {
-                System.out.println("Confirmation gotten");
-                break;
-            }
-        }
-
-        out.println("Quit");
-        out.flush();
         System.out.println("Closing connection");
         commSocket.close();
     }

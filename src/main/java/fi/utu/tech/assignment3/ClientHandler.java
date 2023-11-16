@@ -20,12 +20,11 @@ public class ClientHandler extends Thread {
             String message = new String(in.readAllBytes());
             System.out.println("Received message: " + message);
 
-            System.out.println("Closing a socket");
-            in.close();
+            System.out.println("Closing socket");
+            s.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
-
 }
